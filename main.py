@@ -35,7 +35,7 @@ figall = plt.figure()
 axall = figall.add_subplot(111)
 
 while True:
-    # ONE VIDEO FRAME
+    # ONE VIDEO FRAME (splitting video into frames)
     ret, frame = cap.read()
     # Convert the image from BGR color (which OpenCV uses) to RGB
     # color (which face_recognition uses)
@@ -48,6 +48,8 @@ while True:
 
         # face object cropping
         crop_img = frame[top:bottom, left:right]
+
+        #crop_img = crop_img.squeeze()
         # taking the average for each channel separately (r,g,b)
         avgR = np.mean(crop_img[:, :, 2])
         avgG = np.mean(crop_img[:, :, 1])
